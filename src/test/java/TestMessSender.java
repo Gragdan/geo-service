@@ -54,7 +54,7 @@ public class TestMessSender {
          Assertions.assertEquals(expected, value);
      }
 
-    @org.junit.jupiter.api.Test
+    @Test
     public void testForTest(){
         ForTest forTest = new ForTest();
         int value = forTest.getTestData();
