@@ -10,17 +10,13 @@ import ru.netology.i18n.LocalizationService;
 import ru.netology.i18n.LocalizationServiceImpl;
 import ru.netology.sender.MessageSender;
 import ru.netology.sender.MessageSenderImpl;
-
 import static org.mockito.Mockito.*;
-
-
 import java.util.*;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static ru.netology.entity.Country.RUSSIA;
 import static ru.netology.entity.Country.USA;
 import static ru.netology.geo.GeoServiceImpl.*;
-import static ru.netology.sender.MessageSenderImpl.IP_ADDRESS_HEADER;
+
 
 public class TestMessSender {
 
@@ -82,6 +78,19 @@ public class TestMessSender {
             Assertions.assertEquals(expected, actual);
         }
 
+    }
+    @Test
+    public  void test_locale(){
+        LocalizationServiceImpl localizationService = new LocalizationServiceImpl();
+        String[] expectedArr = {"Добро пожаловать", "Welcome"};
+        List<Country> countries = new ArrayList<>();
+        countries.add(RUSSIA);
+        countries.add(USA);
+        for (int i = 0; i < 2; i++) {
+            String actual = localizationService.locale(countries.get(i));
+            String expected = expectedArr[i];
+            Assertions.assertEquals(expected, actual);
+        }
     }
 
 
